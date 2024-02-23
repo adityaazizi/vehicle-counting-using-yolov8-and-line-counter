@@ -27,7 +27,6 @@ polygon = np.array([
 ])
 
 video_info = sv.VideoInfo.from_video_path(video_path=SOURCE_VIDEO_PATH)
-frame_generator = sv.get_video_frames_generator(source_path=SOURCE_VIDEO_PATH)
 byte_track = sv.ByteTrack(
     frame_rate=video_info.fps,
     track_thresh=0.30,
@@ -56,7 +55,7 @@ zone = sv.PolygonZone(
     polygon=polygon,
     frame_resolution_wh=video_info.resolution_wh)
 
-fourcc = cv2.VideoWriter_fourcc('M', 'J', 'P', 'G')
+fourcc = cv2.VideoWriter_fourcc(*'MP4V')
 vid_writer = cv2.VideoWriter(
     TARGET_VIDEO_PATH,
     fourcc,
